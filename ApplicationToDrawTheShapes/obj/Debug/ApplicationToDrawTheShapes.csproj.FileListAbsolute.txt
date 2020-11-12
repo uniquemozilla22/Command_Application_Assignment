@@ -1,0 +1,10 @@
+C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShapes\bin\Debug\ApplicationToDrawTheShapes.exe.config
+C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShapes\bin\Debug\ApplicationToDrawTheShapes.exe
+C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShapes\bin\Debug\ApplicationToDrawTheShapes.pdb
+C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShapes\obj\Debug\ApplicationToDrawTheShapes.csprojAssemblyReference.cache
+C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShapes\obj\Debug\ApplicationToDrawTheShapes.Form1.resources
+C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShapes\obj\Debug\ApplicationToDrawTheShapes.Properties.Resources.resources
+C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShapes\obj\Debug\ApplicationToDrawTheShapes.csproj.GenerateResource.cache
+C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShapes\obj\Debug\ApplicationToDrawTheShapes.csproj.CoreCompileInputs.cache
+C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShapes\obj\Debug\ApplicationToDrawTheShapes.exe
+C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShapes\obj\Debug\ApplicationToDrawTheShapes.pdb
