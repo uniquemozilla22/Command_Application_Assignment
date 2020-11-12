@@ -8,3 +8,6 @@ C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShap
 C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShapes\obj\Debug\ApplicationToDrawTheShapes.csproj.CoreCompileInputs.cache
 C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShapes\obj\Debug\ApplicationToDrawTheShapes.exe
 C:\Users\unique\source\repos\ApplicationToDrawTheShapes\ApplicationToDrawTheShapes\obj\Debug\ApplicationToDrawTheShapes.pdb
+C:\Users\unique\Documents\GitHub\Command_Application_Assignment\ApplicationToDrawTheShapes\obj\Debug\ApplicationToDrawTheShapes.csprojAssemblyReference.cache
+C:\Users\unique\Documents\GitHub\Command_Application_Assignment\ApplicationToDrawTheShapes\obj\Debug\ApplicationToDrawTheShapes.exe
+C:\Users\unique\Documents\GitHub\Command_Application_Assignment\ApplicationToDrawTheShapes\obj\Debug\ApplicationToDrawTheShapes.pdb

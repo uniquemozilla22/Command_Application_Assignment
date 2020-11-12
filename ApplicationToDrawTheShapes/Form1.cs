@@ -21,7 +21,6 @@ namespace ApplicationToDrawTheShapes
 
         public void Clear()
         {
-
             this.label18.Text = "";
             this.label17.Text = "";
             this.textBox1.Text = "";
@@ -34,11 +33,9 @@ namespace ApplicationToDrawTheShapes
             Clear();
         }
 
-
         public void Validation()
         {
             String validation_Text = "**This text feild is empty**";
-
 
             if (this.textBox1.Text=="" && this.textBox2.Text!="")
             {
@@ -111,7 +108,6 @@ namespace ApplicationToDrawTheShapes
             }
             else if (code[0] == "drawto")
             {
-                
                 try
                 {
                     int code1 = int.Parse(code[1]);
@@ -187,9 +183,8 @@ namespace ApplicationToDrawTheShapes
             }
             else if (code[0] == "pen")
             {
-
             }
-            else if (code[0] == "fill")
+            else if(code[0] == "fill")
             {
 
             }
@@ -197,7 +192,6 @@ namespace ApplicationToDrawTheShapes
             {
                 this.label17.Text = "**Program dont have a " + code[0] + " method**";
             }
-        
         }
 
 
@@ -235,7 +229,6 @@ namespace ApplicationToDrawTheShapes
 
         private void Form1_Load(object sender, EventArgs e)
         {
-             
         }
 
         private void button1_Click(object sender, EventArgs e)
