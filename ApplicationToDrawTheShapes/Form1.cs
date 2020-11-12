@@ -103,8 +103,6 @@ namespace ApplicationToDrawTheShapes
                     int code1 = int.Parse(code[1]);
                     int code2 = int.Parse(code[2]);
                     MoveTo(code1, code2);
-
-
                 }
                 catch (Exception e)
                 {
@@ -113,6 +111,7 @@ namespace ApplicationToDrawTheShapes
             }
             else if (code[0] == "drawto")
             {
+                
                 try
                 {
                     int code1 = int.Parse(code[1]);
@@ -126,15 +125,65 @@ namespace ApplicationToDrawTheShapes
             }
             else if (code[0] == "rectangle")
             {
-
+                if(code.Length==3)
+                {
+                    try
+                    {
+                        int code1 = int.Parse(code[1]);
+                        int code2 = int.Parse(code[2]);
+                        DrawRectangle(code1, code2);
+                    }
+                    catch (Exception e)
+                    {
+                        this.label17.Text = "Please enter a valid number.";
+                    }
+                }
+                else
+                {
+                    this.label17.Text = "**Pass only 2 parameters**";
+                }
+                
             }
             else if (code[0] == "circle")
             {
-
+                if(code.Length==2)
+                {
+                    try
+                    {
+                        int rad = int.Parse(code[1]);
+                        DrawCircle(rad);
+                    }
+                    catch (Exception e)
+                    {
+                        this.label17.Text = "Please enter a valid number.";
+                    }
+                }
+                else
+                {
+                    this.label17.Text = "**Pass only a radius value**";
+                }
+               
             }
             else if (code[0] == "triangle")
             {
-
+                if (code.Length == 4)
+                {
+                    try
+                    {
+                        int side1 = int.Parse(code[1]);
+                        int side2 = int.Parse(code[2]);
+                        int side3 = int.Parse(code[3]);
+                        DrawTriangle(side1,side2,side3);
+                    }
+                    catch (Exception e)
+                    {
+                        this.label17.Text = "Please enter a valid number.";
+                    }
+                }
+                else
+                {
+                    this.label17.Text = "**Pass the length for each side**";
+                }
             }
             else if (code[0] == "pen")
             {
@@ -144,7 +193,6 @@ namespace ApplicationToDrawTheShapes
             {
 
             }
-
             else
             {
                 this.label17.Text = "**Program dont have a " + code[0] + " method**";
@@ -159,6 +207,21 @@ namespace ApplicationToDrawTheShapes
         }
 
         public void DrawTo(int point1, int point2)
+        {
+
+        }
+
+        public void DrawRectangle(int length, int breadth)
+        {
+
+        }
+
+        public void DrawCircle(int radius)
+        {
+
+        }
+
+        public void DrawTriangle(int side1 , int side2 , int side3)
         {
 
         }
