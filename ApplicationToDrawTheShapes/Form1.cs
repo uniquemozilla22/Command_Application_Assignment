@@ -18,11 +18,21 @@ namespace ApplicationToDrawTheShapes
             InitializeComponent();
         }
 
-        String validation_Text = "**This text feild is empty**";
-
-
-        public void validation()
+        public void Clear()
         {
+
+            this.label18.Text = "";
+            this.label17.Text = "";
+            this.textBox1.Text = "";
+            this.textBox2.Text = "";
+            this.pictureBox1.ResetText();
+        }
+
+
+        public void Validation()
+        {
+            String validation_Text = "**This text feild is empty**";
+
 
             if (this.textBox1.Text=="" && this.textBox2.Text!="")
             {
@@ -60,7 +70,12 @@ namespace ApplicationToDrawTheShapes
 
         private void button1_Click(object sender, EventArgs e)
         {
-            validation();           
+            Validation();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Clear();
         }
     }
 }
