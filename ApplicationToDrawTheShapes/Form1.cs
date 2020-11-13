@@ -14,10 +14,15 @@ namespace ApplicationToDrawTheShapes
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
+
+        Pen Default_Pen = new Pen(Color.Red);
+        int pen_position_defaultX = 0;
+        int pen_position_defaultY = 0;
 
         public void Clear()
         {
@@ -26,7 +31,7 @@ namespace ApplicationToDrawTheShapes
             this.label17.Text = "";
             this.textBox1.Text = "";
             this.textBox2.Text = "";
-            this.pictureBox1.ResetText();
+            
         }
 
         public void Reset()
@@ -187,6 +192,14 @@ namespace ApplicationToDrawTheShapes
             }
             else if (code[0] == "pen")
             {
+                if (code.Length == 2)
+                {
+                    PenColorSwitcher(code[1]);                    
+                }
+                else
+                {
+                    this.label17.Text = "**Use pen < color_name > properly**";
+                }
 
             }
             else if (code[0] == "fill")
@@ -200,6 +213,50 @@ namespace ApplicationToDrawTheShapes
         
         }
 
+        public void PenColorSwitcher(String color)
+        {
+            switch (color)
+            {
+                case "green":
+                    {
+                        Default_Pen = new Pen(Color.Green);
+                        break;
+                    }
+
+                case "blue":
+                    {
+                        Default_Pen = new Pen(Color.Blue);
+                        break;
+                    }
+                case "brown":
+                    {
+                        Default_Pen = new Pen(Color.Brown);
+                        break;
+                    }
+
+                case "yellow":
+                    {
+                        Default_Pen = new Pen(Color.Yellow);
+                        break;
+                    }
+
+                case "white":
+                    {
+                        Default_Pen = new Pen(Color.White);
+                        break;
+                    }
+                case "red":
+                    {
+                        Default_Pen = new Pen(Color.Red);
+                        break;
+                    }
+                default:
+                    {
+                        MessageBox.Show("Color Not Found!", "Sorry ! The color "+color+" is not Implemented on the program");
+                        break;
+                    }
+            }
+        }
 
         public void MoveTo(int point1, int point2)
         {
@@ -213,15 +270,16 @@ namespace ApplicationToDrawTheShapes
 
         public void DrawRectangle(int length, int breadth)
         {
-            Pen p = new Pen(Color.Red);
-            Graphics g = this.pictureBox1.CreateGraphics();
 
-            g.DrawRectangle(p, length, breadth,length, breadth);
+            Graphics Rect = this.pictureBox1.CreateGraphics();
+            Rect.DrawRectangle(Default_Pen ,pen_position_defaultX,pen_position_defaultY ,breadth,length);
 
         }
 
         public void DrawCircle(int radius)
         {
+            Graphics Circle = this.pictureBox1.CreateGraphics();
+            Circle.DrawEllipse(Default_Pen, pen_position_defaultX, pen_position_defaultY, radius + radius, radius + radius);
 
         }
 
@@ -245,6 +303,7 @@ namespace ApplicationToDrawTheShapes
         private void button1_Click(object sender, EventArgs e)
         {
             Validation();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
