@@ -39,6 +39,7 @@ namespace ApplicationToDrawTheShapes
         public void Reset()
         {
             Clear();
+            this.pictureBox1.Image = null;
         }
 
 
@@ -94,7 +95,7 @@ namespace ApplicationToDrawTheShapes
             {
                 Clear();
             }
-            else if (command == "")
+            else if (command == "reset")
             {
                 Reset();
             }
@@ -374,7 +375,7 @@ namespace ApplicationToDrawTheShapes
                 Circle.DrawEllipse(Default_Pen, pen_position_defaultX, pen_position_defaultY, radius * 2, radius * 2);
 
             }
-            this.label18.Text = "Circle Drawn";
+            this.label17.Text = "Circle Drawn";
 
         }
 
