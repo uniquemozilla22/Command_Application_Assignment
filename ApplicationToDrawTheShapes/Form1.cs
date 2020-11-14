@@ -17,12 +17,14 @@ namespace ApplicationToDrawTheShapes
 
         public Form1()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
-        Pen Default_Pen = new Pen(Color.Red);
-        int pen_position_defaultX = 0;
-        int pen_position_defaultY = 0;
+        int pen_position_defaultX = 10;
+        int pen_position_defaultY = 10;
+        bool fill = false;
+        Pen Default_Pen = new Pen(Color.White);
+        SolidBrush Default_Brush = new SolidBrush(Color.White);
 
         public void Clear()
         {
@@ -204,7 +206,22 @@ namespace ApplicationToDrawTheShapes
             }
             else if (code[0] == "fill")
             {
+                if(code[1]=="on")
+                {
+                    this.fill = true;
+                    this.label17.Text = "Fill turned on";
 
+                }
+                else if(code[1]=="off")
+                {
+                    this.fill = false;
+                    this.label17.Text = "Fill turned off";
+
+                }
+                else
+                {
+                    this.label17.Text = "Not a valid command";
+                }
             }
             else
             {
@@ -215,52 +232,111 @@ namespace ApplicationToDrawTheShapes
 
         public void PenColorSwitcher(String color)
         {
-            switch (color)
+            this.label17.Text = "**Pen color set : " + color + "**";
+
+            if(!fill)
             {
-                case "green":
-                    {
-                        Default_Pen = new Pen(Color.Green);
-                        break;
-                    }
+                switch (color)
+                {
+                    case "green":
+                        {
+                            Default_Pen = new Pen(Color.Green);
+                            break;
+                        }
 
-                case "blue":
-                    {
-                        Default_Pen = new Pen(Color.Blue);
-                        break;
-                    }
-                case "brown":
-                    {
-                        Default_Pen = new Pen(Color.Brown);
-                        break;
-                    }
+                    case "blue":
+                        {
+                            Default_Pen = new Pen(Color.Blue);
+                            break;
+                        }
+                    case "brown":
+                        {
+                            Default_Pen = new Pen(Color.Brown);
+                            break;
+                        }
 
-                case "yellow":
-                    {
-                        Default_Pen = new Pen(Color.Yellow);
-                        break;
-                    }
+                    case "yellow":
+                        {
+                            Default_Pen = new Pen(Color.Yellow);
+                            break;
+                        }
 
-                case "white":
-                    {
-                        Default_Pen = new Pen(Color.White);
-                        break;
-                    }
-                case "red":
-                    {
-                        Default_Pen = new Pen(Color.Red);
-                        break;
-                    }
-                default:
-                    {
-                        MessageBox.Show("Color Not Found!", "Sorry ! The color "+color+" is not Implemented on the program");
-                        break;
-                    }
+                    case "white":
+                        {
+                            Default_Pen = new Pen(Color.White);
+                            break;
+                        }
+                    case "red":
+                        {
+                            Default_Pen = new Pen(Color.Red);
+                            break;
+                        }
+                    default:
+                        {
+                            this.label17.Text = "**Pen color not found : " + color + "**";
+
+                            MessageBox.Show("Sorry ! The color " + color + " is not Implemented on the program", "Color Not Found!");
+                            break;
+                        }
+                }
+
             }
+            else
+            {
+                switch (color)
+                {
+                    case "green":
+                        {
+                            Default_Brush = new SolidBrush(Color.Green);
+                            break;
+                        }
+
+                    case "blue":
+                        {
+                            Default_Brush = new SolidBrush(Color.Blue);
+                            break;
+                        }
+                    case "brown":
+                        {
+                            Default_Brush = new SolidBrush(Color.Brown);
+                            break;
+                        }
+
+                    case "yellow":
+                        {
+                            Default_Brush = new SolidBrush(Color.Yellow);
+                            break;
+                        }
+
+                    case "white":
+                        {
+                            Default_Brush = new SolidBrush(Color.White);
+                            break;
+                        }
+                    case "red":
+                        {
+                            Default_Brush = new SolidBrush(Color.Red);
+                            break;
+                        }
+                    default:
+                        {
+                            this.label17.Text = "**Filling color not found : " + color + "**";
+
+                            MessageBox.Show("Sorry ! The color " + color + " is not Implemented on the program", "Color Not Found!");
+                            break;
+                        }
+                }
+
+            }
+
         }
 
         public void MoveTo(int point1, int point2)
         {
-
+            this.pen_position_defaultX = point1;
+            this.pen_position_defaultY = point2;   
+            this.label17.Text="Initial position moved to ("+point1+ " , " + point2+")";
+            
         }
 
         public void DrawTo(int point1, int point2)
@@ -272,19 +348,57 @@ namespace ApplicationToDrawTheShapes
         {
 
             Graphics Rect = this.pictureBox1.CreateGraphics();
-            Rect.DrawRectangle(Default_Pen ,pen_position_defaultX,pen_position_defaultY ,breadth,length);
+            if(fill)
+            {
+                Rect.FillRectangle(Default_Brush, pen_position_defaultX, pen_position_defaultY, breadth, length);
+
+            }
+            else
+            {
+                Rect.DrawRectangle(Default_Pen, pen_position_defaultX, pen_position_defaultY, breadth, length);
+            }
+            this.label17.Text = "Rectangle Drawn";
 
         }
 
         public void DrawCircle(int radius)
         {
             Graphics Circle = this.pictureBox1.CreateGraphics();
-            Circle.DrawEllipse(Default_Pen, pen_position_defaultX, pen_position_defaultY, radius + radius, radius + radius);
+            if (fill)
+            {
+                Circle.FillEllipse(Default_Brush, pen_position_defaultX, pen_position_defaultY, radius * 2, radius * 2);
+
+            }
+            else
+            {
+                Circle.DrawEllipse(Default_Pen, pen_position_defaultX, pen_position_defaultY, radius * 2, radius * 2);
+
+            }
+            this.label18.Text = "Circle Drawn";
 
         }
 
         public void DrawTriangle(int side1 , int side2 , int side3)
         {
+            Graphics Triangle = this.pictureBox1.CreateGraphics();
+            
+
+            Point p1 = new Point(pen_position_defaultX, pen_position_defaultY);
+            Point p2 = new Point(side1, pen_position_defaultY);
+            Point p3 = new Point(side2, side3);
+
+            Point[] points = { p1, p2, p3 };
+
+            if (fill)
+            {
+                Triangle.FillPolygon(Default_Brush, points);
+            }
+            else
+            {
+                Triangle.DrawPolygon(Default_Pen, points);
+
+            }
+            this.label17.Text = "Triangle Drawn";
 
         }
 
