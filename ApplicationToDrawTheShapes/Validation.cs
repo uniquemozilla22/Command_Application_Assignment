@@ -49,8 +49,9 @@ namespace ApplicationToDrawTheShapes
             }
             else if (command != "" && code != "")
             {
-                this.error[0] = "Running";
-                this.error[1] = "Running";
+
+                Command_Implementation ci = new Command_Implementation(code, command);
+
 
             }
 
