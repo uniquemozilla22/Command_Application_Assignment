@@ -8,12 +8,12 @@ namespace ApplicationToDrawTheShapes
 {
     public class Code_Implementation
     {
-        string[] error = { "", "" }
+        string[] error = { "", "" };
         string[] code ;
         public Code_Implementation(string[] code)
         {
             this.code = code;
-            SwitichingFunctions(code);
+            this.SwitichingFunctions(code);
         }
 
 
@@ -25,7 +25,7 @@ namespace ApplicationToDrawTheShapes
                 {
                     int code1 = int.Parse(code[1]);
                     int code2 = int.Parse(code[2]);
-                    MoveTo(code1, code2);
+                    error[0] = "running";
                 }
                 catch (Exception e)
                 {
@@ -39,7 +39,8 @@ namespace ApplicationToDrawTheShapes
                 {
                     int code1 = int.Parse(code[1]);
                     int code2 = int.Parse(code[2]);
-                    DrawTo(code1, code2);
+                    error[0] = "running";
+
                 }
                 catch (Exception e)
                 {
@@ -54,7 +55,8 @@ namespace ApplicationToDrawTheShapes
                     {
                         int code1 = int.Parse(code[1]);
                         int code2 = int.Parse(code[2]);
-                        DrawRectangle(code1, code2);
+                        Rectangle r = new Rectangle(code2, code1);
+                        error = r.error_handling_rectangle();
                     }
                     catch (Exception e)
                     {
@@ -74,7 +76,9 @@ namespace ApplicationToDrawTheShapes
                     try
                     {
                         int rad = int.Parse(code[1]);
-                        DrawCircle(rad);
+                        Circle r = new Circle(rad);
+                        error = r.error_handling_circle();
+
                     }
                     catch (Exception e)
                     {
@@ -96,7 +100,9 @@ namespace ApplicationToDrawTheShapes
                         int side1 = int.Parse(code[1]);
                         int side2 = int.Parse(code[2]);
                         int side3 = int.Parse(code[3]);
-                        DrawTriangle(side1, side2, side3);
+                        Triangle r = new Triangle(side1,side2,side3);
+                        error = r.error_handling_Triangle();
+
                     }
                     catch (Exception e)
                     {
@@ -112,7 +118,8 @@ namespace ApplicationToDrawTheShapes
             {
                 if (code.Length == 2)
                 {
-                    PenColorSwitcher(code[1]);
+                    error[0] = "running";
+
                 }
                 else
                 {
@@ -124,13 +131,13 @@ namespace ApplicationToDrawTheShapes
             {
                 if (code[1] == "on")
                 {
-                    this.fill = true;
+                    Form1.fill = true;
                     error[0] = "Fill turned on";
 
                 }
                 else if (code[1] == "off")
                 {
-                    this.fill = false;
+                    Form1.fill = false;
                     error[0] = "Fill turned off";
 
                 }

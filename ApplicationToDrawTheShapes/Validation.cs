@@ -51,6 +51,7 @@ namespace ApplicationToDrawTheShapes
             {
 
                 Command_Implementation ci = new Command_Implementation(code, command);
+                this.error = ci.Error_Handling_CommandImplementation();
 
 
             }

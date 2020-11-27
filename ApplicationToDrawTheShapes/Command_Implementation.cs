@@ -29,6 +29,7 @@ namespace ApplicationToDrawTheShapes
             if (command == "run")
             {
                 Code_Implementation coi= new Code_Implementation(code_arr);
+                this.error = coi.Error_Handling_CodeImplementation();
             }
             else if (command == "clear")
             {

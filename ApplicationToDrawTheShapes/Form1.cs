@@ -14,22 +14,21 @@ namespace ApplicationToDrawTheShapes
 {
     public partial class Form1 : Form
     {
+        public static Graphics g;
+
         public Form1()
         {
             InitializeComponent();
             this.textBox1.Text = "";
             this.textBox2.Text = "";
+            g = this.pictureBox1.CreateGraphics();
+
         }
-
-        Validation valid;
-
-        int pen_position_defaultX = 10;
-        int pen_position_defaultY = 10;
-        bool fill = false;
-        Pen Default_Pen = new Pen(Color.White);
-        SolidBrush Default_Brush = new SolidBrush(Color.White);
-
-        
+        public static int pen_position_defaultX = 10;
+        public static int pen_position_defaultY = 10;
+        public static bool fill = false;
+        public static Pen Default_Pen = new Pen(Color.White);
+        public static SolidBrush Default_Brush = new SolidBrush(Color.White);
 
         public void PenColorSwitcher(String color)
         {
@@ -134,8 +133,8 @@ namespace ApplicationToDrawTheShapes
 
         public void MoveTo(int point1, int point2)
         {
-            this.pen_position_defaultX = point1;
-            this.pen_position_defaultY = point2;   
+            //this.pen_position_defaultX = point1;
+            //this.pen_position_defaultY = point2;   
             this.label17.Text="Initial position moved to ("+point1+ " , " + point2+")";
             
         }
@@ -159,23 +158,6 @@ namespace ApplicationToDrawTheShapes
                 Rect.DrawRectangle(Default_Pen, pen_position_defaultX, pen_position_defaultY, breadth, length);
             }
             this.label17.Text = "Rectangle Drawn";
-
-        }
-
-        public void DrawCircle(int radius)
-        {
-            Graphics Circle = this.pictureBox1.CreateGraphics();
-            if (fill)
-            {
-                Circle.FillEllipse(Default_Brush, pen_position_defaultX, pen_position_defaultY, radius * 2, radius * 2);
-
-            }
-            else
-            {
-                Circle.DrawEllipse(Default_Pen, pen_position_defaultX, pen_position_defaultY, radius * 2, radius * 2);
-
-            }
-            this.label17.Text = "Circle Drawn";
 
         }
 
