@@ -14,11 +14,14 @@ namespace ApplicationToDrawTheShapes
 {
     public partial class Form1 : Form
     {
-
         public Form1()
         {
             InitializeComponent();
+            this.textBox1.Text = "";
+            this.textBox2.Text = "";
         }
+
+        Validation valid;
 
         int pen_position_defaultX = 10;
         int pen_position_defaultY = 10;
@@ -26,59 +29,7 @@ namespace ApplicationToDrawTheShapes
         Pen Default_Pen = new Pen(Color.White);
         SolidBrush Default_Brush = new SolidBrush(Color.White);
 
-        public void Clear()
-        {
-
-            this.label18.Text = "";
-            this.label17.Text = "";
-            this.textBox1.Text = "";
-            this.textBox2.Text = "";
-            
-        }
-
-        public void Reset()
-        {
-            Clear();
-            this.pictureBox1.Image = null;
-        }
-
-
-        public void Validation()
-        {
-            String validation_Text = "**This text feild is empty**";
-
-
-            if (this.textBox1.Text=="" && this.textBox2.Text!="")
-            {
-                this.label17.Text = validation_Text;
-                this.label18.Text = "";
-                String comm = this.textBox2.Text.ToLower();
-                if (comm=="clear")
-                {
-                    Clear();
-                }
-            }
-            else if(this.textBox2.Text=="" && this.textBox1.Text != "")
-            {
-                this.label18.Text = validation_Text;
-                this.label17.Text = "";
-            }
-            else if(this.textBox2.Text == "" && this.textBox1.Text == "")
-            {
-                this.label18.Text = validation_Text;
-                this.label17.Text = validation_Text;
-            }
-            else if (this.textBox2.Text != "" && this.textBox1.Text != "")
-            {
-                this.label18.Text = "";
-                this.label17.Text = "";
-
-                Command_Implementation(this.textBox1.Text, this.textBox2.Text);
-            }
-
-
-        }
-
+        
         public void Command_Implementation(String code , String command)
         {
 
@@ -93,11 +44,9 @@ namespace ApplicationToDrawTheShapes
             }
             else if (command == "clear")
             {
-                Clear();
             }
             else if (command == "reset")
             {
-                Reset();
             }
 
         }
@@ -417,13 +366,22 @@ namespace ApplicationToDrawTheShapes
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Validation();
+           Validation valid = new  Validation(textBox1.Text,textBox2.Text);
+            String[] error=valid.Error_Handling_Validation();
+
+            this.label17.Text = error[0];
+            this.label18.Text = error[1];
+
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        public void Clear()
+        { 
         }
 
     }
