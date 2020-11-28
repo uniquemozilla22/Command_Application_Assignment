@@ -10,11 +10,11 @@ namespace ApplicationToDrawTheShapes
     class Triangle
     {
 
-        Pen Default_Pen = Form1.Default_Pen;
-        Brush Default_Brush = Form1.Default_Brush;
-        int pen_position_defaultX = Form1.pen_position_defaultX;
-        int pen_position_defaultY = Form1.pen_position_defaultY;
-        Graphics GTriangle = Form1.g;
+        Pen Default_Pen = ShapeCoder.Default_Pen;
+        Brush Default_Brush = ShapeCoder.Default_Brush;
+        int pen_position_defaultX = ShapeCoder.pen_position_defaultX;
+        int pen_position_defaultY = ShapeCoder.pen_position_defaultY;
+        Graphics GTriangle = ShapeCoder.g;
         string[] error = { "", "" };
         public Triangle(int side1,int side2,int side3)
         {
@@ -26,7 +26,7 @@ namespace ApplicationToDrawTheShapes
 
             Point[] points = { p1, p2, p3 };
 
-            if (Form1.fill)
+            if (ShapeCoder.fill)
             {
                 GTriangle.FillPolygon(Default_Brush, points);
             }

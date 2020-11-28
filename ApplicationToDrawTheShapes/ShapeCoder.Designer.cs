@@ -1,6 +1,6 @@
 ﻿namespace ApplicationToDrawTheShapes
 {
-    partial class Form1
+    partial class ShapeCoder
     {
         /// <summary>
         /// Required designer variable.

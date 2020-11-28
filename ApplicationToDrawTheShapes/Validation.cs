@@ -19,8 +19,8 @@ namespace ApplicationToDrawTheShapes
             this.code = code;
             this.command = command;
             this.Validation_String();
-            
         }
+       
 
         public void Validation_String()
         {
@@ -29,13 +29,9 @@ namespace ApplicationToDrawTheShapes
 
             if (code == "" && command!= "")
             {
+               
                 this.error[0] = validation_Text;
                 this.error[1] = "";
-                String comm = command.ToLower();
-                if (comm == "clear")
-                {
-                    this.error[1]="Cleared";
-                }
             }
             else if (command == "" && code != "")
             {
@@ -49,9 +45,11 @@ namespace ApplicationToDrawTheShapes
             }
             else if (command != "" && code != "")
             {
-
-                Command_Implementation ci = new Command_Implementation(code, command);
-                this.error = ci.Error_Handling_CommandImplementation();
+                code = code.ToLower();
+                command = command.ToLower();
+                String[] code_arr = code.Split(' ');
+                Code_Implementation coi = new Code_Implementation(code_arr);
+                this.error = coi.Error_Handling_CodeImplementation();
 
 
             }

@@ -9,16 +9,16 @@ namespace ApplicationToDrawTheShapes
 {
     public class Circle
     {
-        Pen Default_Pen = Form1.Default_Pen;
-        Brush Default_Brush = Form1.Default_Brush;
-        int pen_position_defaultX = Form1.pen_position_defaultX;
-        int pen_position_defaultY = Form1.pen_position_defaultY;
-        Graphics GCircle = Form1.g;
+        Pen Default_Pen = ShapeCoder.Default_Pen;
+        Brush Default_Brush = ShapeCoder.Default_Brush;
+        int pen_position_defaultX = ShapeCoder.pen_position_defaultX;
+        int pen_position_defaultY = ShapeCoder.pen_position_defaultY;
+        Graphics GCircle = ShapeCoder.g;
         string[] error = { "", "" };
         public Circle(int radius)
         {
 
-            if (Form1.fill)
+            if (ShapeCoder.fill)
             {
                 GCircle.FillEllipse(Default_Brush, pen_position_defaultX, pen_position_defaultY, radius, radius);
 

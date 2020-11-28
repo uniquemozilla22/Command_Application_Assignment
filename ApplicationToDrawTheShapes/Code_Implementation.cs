@@ -1,8 +1,10 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ApplicationToDrawTheShapes
 {
@@ -10,6 +12,8 @@ namespace ApplicationToDrawTheShapes
     {
         string[] error = { "", "" };
         string[] code ;
+        Command comm = new Command();
+
         public Code_Implementation(string[] code)
         {
             this.code = code;
@@ -19,27 +23,53 @@ namespace ApplicationToDrawTheShapes
 
         public void SwitichingFunctions(string[] code)
         {
-            if (code[0] == "moveto")
+            string firstword = code[0].Trim();
+            string[] parameters = code[1].Split(',');
+
+            for (int i=0; i < parameters.Length; i++)
+            {
+                parameters[i] = parameters[i].Trim();
+            }
+
+            if (firstword == "moveto")
             {
                 try
                 {
-                    int code1 = int.Parse(code[1]);
-                    int code2 = int.Parse(code[2]);
-                    error[0] = "running";
+                    if(parameters.Length==2)
+                    {
+                        int code1 = int.Parse(parameters[0]);
+                        int code2 = int.Parse(parameters[1]);
+                        comm.MoveTo(code1, code2);
+                        error = comm.error_handling_command();
+                    }
+                    else
+                    {
+                        error[0] = "**Please pass a corrcet Syntax for moveTo**";
+                    }
                 }
                 catch (Exception e)
                 {
                     error[0] = "Please enter a valid number.";
                 }
             }
-            else if (code[0] == "drawto")
+            else if (firstword == "drawto")
             {
 
                 try
                 {
-                    int code1 = int.Parse(code[1]);
-                    int code2 = int.Parse(code[2]);
-                    error[0] = "running";
+                    if(parameters.Length==2)
+                    {
+
+                        int code1 = int.Parse(parameters[0]);
+                        int code2 = int.Parse(parameters[1]);
+                        comm.DrawTo(code1, code2);
+                        error = comm.error_handling_command();
+                    }
+                    else
+                    {
+                        error[0] = "**Please pass a corrcet Syntax for drawTo**";
+
+                    }
 
                 }
                 catch (Exception e)
@@ -47,14 +77,14 @@ namespace ApplicationToDrawTheShapes
                     error[0] = "Please enter a valid number.";
                 }
             }
-            else if (code[0] == "rectangle")
+            else if (firstword == "rectangle")
             {
-                if (code.Length == 3)
+                if (parameters.Length == 2)
                 {
                     try
                     {
-                        int code1 = int.Parse(code[1]);
-                        int code2 = int.Parse(code[2]);
+                        int code1 = int.Parse(parameters[0]);
+                        int code2 = int.Parse(parameters[1]);
                         Rectangle r = new Rectangle(code2, code1);
                         error = r.error_handling_rectangle();
                     }
@@ -65,18 +95,19 @@ namespace ApplicationToDrawTheShapes
                 }
                 else
                 {
-                    error[0] = "**Pass only 2 parameters**";
+                    error[0] = "**Please pass a corrcet Syntax for Rectangle**";
+
                 }
 
             }
-            else if (code[0] == "circle")
+            else if (firstword == "circle")
             {
-                if (code.Length == 2)
+                if (parameters.Length == 1)
                 {
                     try
                     {
-                        int rad = int.Parse(code[1]);
-                        Circle r = new Circle(rad);
+                        int code1 = int.Parse(parameters[0]);
+                        Circle r = new Circle(code1);
                         error = r.error_handling_circle();
 
                     }
@@ -87,20 +118,22 @@ namespace ApplicationToDrawTheShapes
                 }
                 else
                 {
-                    error[0] = "**Pass only a radius value**";
+                    error[0] = "**Please pass a corrcet Syntax for Circle**";
+
                 }
 
             }
-            else if (code[0] == "triangle")
+            else if (firstword == "triangle")
             {
-                if (code.Length == 4)
+                if (parameters.Length == 3)
                 {
                     try
                     {
-                        int side1 = int.Parse(code[1]);
-                        int side2 = int.Parse(code[2]);
-                        int side3 = int.Parse(code[3]);
-                        Triangle r = new Triangle(side1,side2,side3);
+                        int code1 = int.Parse(parameters[0]);
+                        int code2 = int.Parse(parameters[1]);
+                        int code3 = int.Parse(parameters[2]);
+
+                        Triangle r = new Triangle(code1, code2, code3);
                         error = r.error_handling_Triangle();
 
                     }
@@ -111,15 +144,16 @@ namespace ApplicationToDrawTheShapes
                 }
                 else
                 {
-                    error[0] = "**Pass the length for each side**";
+                    error[0] = "**Please pass a corrcet Syntax for Triangle**";
+
                 }
             }
-            else if (code[0] == "pen")
+            else if (firstword == "pen")
             {
-                if (code.Length == 2)
+                if (parameters.Length == 1)
                 {
-                    error[0] = "running";
-
+                    comm.PenColorSwitcher(parameters[0]);
+                    error = comm.error_handling_command();
                 }
                 else
                 {
@@ -127,17 +161,17 @@ namespace ApplicationToDrawTheShapes
                 }
 
             }
-            else if (code[0] == "fill")
+            else if (firstword == "fill")
             {
-                if (code[1] == "on")
+                if (parameters[0] == "on")
                 {
-                    Form1.fill = true;
+                    ShapeCoder.fill = true;
                     error[0] = "Fill turned on";
 
                 }
-                else if (code[1] == "off")
+                else if (parameters[0] == "off")
                 {
-                    Form1.fill = false;
+                    ShapeCoder.fill = false;
                     error[0] = "Fill turned off";
 
                 }
