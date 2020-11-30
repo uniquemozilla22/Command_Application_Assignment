@@ -15,7 +15,7 @@
 
 - 📄 Know about my experiences [https://www.yogesh-bhattarai.com](https://www.yogesh-bhattarai.com)
 
-- ⚡ Fun fact **Did you knwo**
+- ⚡ Fun fact **How do you cheer up a JavaScript developer?---> You “Console” them!**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
